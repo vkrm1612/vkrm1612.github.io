@@ -254,6 +254,26 @@
         height: 14px;
         flex-shrink: 0;
       }
+      .sidebar-quote {
+        margin-top: auto;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--border);
+      }
+      .sidebar-quote-text {
+        font-family: var(--sans);
+        font-size: 11.5px;
+        font-style: italic;
+        font-weight: 300;
+        color: var(--text-muted);
+        line-height: 1.65;
+        margin-bottom: 0.45rem;
+      }
+      .sidebar-quote-attr {
+        font-family: var(--mono);
+        font-size: 9px;
+        color: var(--text-dim);
+        letter-spacing: 0.08em;
+      }
 
       /* MAIN CONTENT */
       .main-content {
@@ -418,7 +438,7 @@
       .domain-count {
         font-family: var(--mono);
         font-size: 11px;
-        color: var(--text-dim);
+        color: var(--text-muted);
       }
 
       /* PROJECT CARDS */
@@ -552,7 +572,7 @@
       .project-hint {
         font-family: var(--mono);
         font-size: 10px;
-        color: var(--text-dim);
+        color: var(--text-muted);
         letter-spacing: 0.05em;
       }
 
@@ -921,32 +941,6 @@
         height: 15px;
         flex-shrink: 0;
       }
-      .footer-bottom {
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.25rem;
-        border-bottom: 1px solid var(--border);
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.4rem;
-      }
-      .footer-quote {
-        font-family: var(--sans);
-        font-size: 15px;
-        font-style: italic;
-        font-weight: 300;
-        color: var(--text-muted);
-        letter-spacing: 0.01em;
-        max-width: 560px;
-        line-height: 1.7;
-      }
-      .footer-quote-attr {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--text-dim);
-        letter-spacing: 0.1em;
-      }
 
       /* SCROLLBAR */
       html::-webkit-scrollbar { width: 6px; }
@@ -985,72 +979,8 @@
     <div class="page-shell">
       <!-- ── SIDEBAR ── -->
       <aside class="sidebar">
-        <!-- Profile photo (SVG illustrated avatar — replace with: <img src="profile.jpg" alt="Vikram Bharadwaj" />) -->
         <div class="sidebar-photo">
-          <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
-            <rect width="130" height="130" fill="#18181c" />
-            <ellipse cx="65" cy="108" rx="40" ry="26" fill="#1a2820" />
-            <rect x="57" y="75" width="16" height="18" rx="6" fill="#c4a07a" />
-            <ellipse cx="65" cy="61" rx="27" ry="29" fill="#c4a07a" />
-            <ellipse cx="65" cy="37" rx="27" ry="15" fill="#160e04" />
-            <rect x="38" y="37" width="9" height="22" rx="5" fill="#160e04" />
-            <rect x="83" y="37" width="9" height="22" rx="5" fill="#160e04" />
-            <rect
-              x="47"
-              y="55"
-              width="15"
-              height="11"
-              rx="5"
-              fill="none"
-              stroke="#251404"
-              stroke-width="1.6"
-            />
-            <rect
-              x="68"
-              y="55"
-              width="15"
-              height="11"
-              rx="5"
-              fill="none"
-              stroke="#251404"
-              stroke-width="1.6"
-            />
-            <line
-              x1="62"
-              y1="61"
-              x2="68"
-              y2="61"
-              stroke="#251404"
-              stroke-width="1.3"
-            />
-            <circle cx="55.5" cy="61" r="3.5" fill="#1a0d02" />
-            <circle cx="75.5" cy="61" r="3.5" fill="#1a0d02" />
-            <circle cx="56.5" cy="60" r="1" fill="#fff" opacity="0.5" />
-            <circle cx="76.5" cy="60" r="1" fill="#fff" opacity="0.5" />
-            <path
-              d="M50 53 Q55.5 50 61 53"
-              stroke="#160e04"
-              stroke-width="1.6"
-              fill="none"
-              stroke-linecap="round"
-            />
-            <path
-              d="M69 53 Q74.5 50 80 53"
-              stroke="#160e04"
-              stroke-width="1.6"
-              fill="none"
-              stroke-linecap="round"
-            />
-            <path d="M64 66 Q61.5 72 64 73 Q66.5 72 64 66" fill="#ae8a60" />
-            <path
-              d="M57 78 Q65 84 73 78"
-              stroke="#9a7048"
-              stroke-width="1.5"
-              fill="none"
-              stroke-linecap="round"
-            />
-            <path d="M45 105 L57 89 L65 95 L73 89 L85 105" fill="#8be0c0" />
-          </svg>
+          <img src="assets/profile.jpeg" alt="Vikram Bharadwaj" />
         </div>
 
         <p class="sidebar-name">Vikram Bharadwaj</p>
@@ -1128,6 +1058,11 @@
             </svg>
             Email
           </a>
+        </div>
+
+        <div class="sidebar-quote">
+          <p class="sidebar-quote-text">"Measure what can be measured, and make measurable what cannot be measured."</p>
+          <p class="sidebar-quote-attr">— Galileo Galilei</p>
         </div>
       </aside>
 
@@ -1414,10 +1349,6 @@
 
     <!-- FOOTER -->
     <footer>
-      <div class="footer-bottom">
-        <p class="footer-quote">"Measure what can be measured, and make measurable what cannot be measured."</p>
-        <p class="footer-quote-attr">— Galileo Galilei</p>
-      </div>
       <div class="footer-inner">
         <div class="footer-left">
           <span class="footer-logo">VIKRAM BHARADWAJ</span>
