@@ -1140,6 +1140,9 @@
             <button class="domain-tab" onclick="switchDomain('embedded', this)">
               Embedded Systems
             </button>
+            <button class="domain-tab" onclick="switchDomain('aixcae', this)">
+              AIxCAE
+            </button>
           </div>
 
           <!-- FEA -->
@@ -1338,6 +1341,50 @@
                 </div>
               </div>
 
+
+            </div>
+          </div>
+
+          <!-- AIxCAE -->
+          <div class="domain-panel" id="domain-aixcae">
+            <div class="domain-header">
+              <span class="domain-title">AI × CAE</span>
+              <span class="domain-count">1 project</span>
+            </div>
+            <div class="projects-grid">
+
+              <div class="project-card" onclick="toggleOverview(this, event)">
+                <div class="project-card-body">
+                  <div class="project-card-top">
+                    <h3>GNN Geometry Detector — B-Rep Part Classification</h3>
+                    <div class="project-expand-icon"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5L5 6.5L8 3.5"/></svg></div>
+                  </div>
+                  <div class="project-tags"><span class="tag">GNN</span><span class="tag">GraphSAGE</span><span class="tag">B-Rep</span><span class="tag">Python</span><span class="tag">PySide6</span></div>
+                  <p class="project-desc">Graph neural network that classifies mechanical CAD parts — bolts, nuts, flanges, pressure vessels — directly from STEP-file B-Rep topology, with no manual labeling or template matching.</p>
+                  <div class="project-card-footer">
+                    <a href="https://github.com/vkrm1612/GNN-Geometry-Detector" target="_blank" class="project-link" onclick="event.stopPropagation()">View on GitHub <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg></a>
+                    <span class="project-hint">click to expand</span>
+                  </div>
+                </div>
+                <div class="project-overview">
+                  <div class="project-overview-inner">
+                    <div class="project-overview-content">
+                      <div class="project-media">
+                        <img src="https://raw.githubusercontent.com/vkrm1612/GNN-Geometry-Detector/main/demo.png" alt="CAD Assembly Inspector demo — GNN part classification" />
+                      </div>
+                      <p class="project-overview-label">Project Overview</p>
+                      <p class="project-overview-date">GraphSAGE · OCP / build123d · PySide6 · Python</p>
+                      <p class="project-overview-body">A B-Rep (Boundary Representation) part-recognition system for mechanical CAD components. Given a solid extracted from a STEP file, the pipeline classifies it into one of four standard part categories — bolt, nut, flange, or pressure vessel — purely from its topology and geometry.<br><br>Each solid is walked face-by-face and serialized into a normalized token string (surface type, area ratio, centroid, normal, and face-adjacency), which is parsed directly into a graph — faces as nodes, shared edges as adjacency — and classified with a 3-layer GraphSAGE stack. A parallel approach fine-tuned an 8B-parameter LLM (Llama-3.1, LoRA) on the same flattened topology text; the GNN matched its accuracy at a fraction of the parameters and compute, since the graph structure is given directly rather than inferred from a token sequence.</p>
+                      <ul class="project-overview-list">
+                        <li>Trained on 1,742 labeled STEP-derived examples across bolts, nuts, flanges, and pressure vessels.</li>
+                        <li>Approach 1 — BREPLLM: LoRA fine-tune (r=16, alpha=16) of a 4-bit quantized Llama-3.1-8B on serialized topology text via SFTTrainer.</li>
+                        <li>Approach 2 — GNN: 3-layer GraphSAGE with batch norm and mean+max pooling, trained end-to-end on the face-adjacency graph in minutes on a free-tier GPU.</li>
+                        <li>The GNN backend powers <code>sample.py</code>, an interactive PySide6 3D viewer that loads multi-body STEP assemblies and classifies each part live, with no network call or LLM server.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             </div>
           </div>
