@@ -1237,8 +1237,8 @@
                     <h3>2D Linear Convection Simulation</h3>
                     <div class="project-expand-icon"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5L5 6.5L8 3.5"/></svg></div>
                   </div>
-                  <div class="project-tags"><span class="tag">Fortran</span><span class="tag">FDM</span><span class="tag">Upwind Scheme</span></div>
-                  <p class="project-desc">Fortran-based numerical simulation solving the 2D linear convection equation using the first-order upwind finite difference scheme.</p>
+                  <div class="project-tags"><span class="tag">Fortran</span><span class="tag">FDM</span><span class="tag">Upwind Scheme</span><span class="tag">PINN</span><span class="tag">PyTorch</span></div>
+                  <p class="project-desc">2D linear convection equation solved two ways: a Fortran first-order upwind finite difference scheme, and a PyTorch physics-informed neural network (PINN).</p>
                   <div class="project-card-footer">
                     <a href="https://github.com/vkrm1612/Portfolio/tree/main/CFD/Linear_Convection" target="_blank" class="project-link" onclick="event.stopPropagation()">View on GitHub <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg></a>
                     <span class="project-hint">click to expand</span>
@@ -1248,16 +1248,15 @@
                   <div class="project-overview-inner">
                     <div class="project-overview-content">
                       <div class="project-media">
-                        <img src="https://raw.githubusercontent.com/vkrm1612/Portfolio/main/CFD/Linear_Convection/2-D_Linear_convection/Figure_1.png" alt="2D linear convection simulation result" />
+                        <img src="https://raw.githubusercontent.com/vkrm1612/Portfolio/main/CFD/Linear_Convection/2-D_Linear_convection/fdm_vs_pinn_3d.png" alt="2D linear convection: FDM vs PINN solution surfaces" />
                       </div>
                       <p class="project-overview-label">Project Overview</p>
-                      <p class="project-overview-date">Fortran · Finite Difference · First-Order Upwind Scheme</p>
-                      <p class="project-overview-body">A Fortran program solving the two-dimensional linear convection equation using the first-order upwind finite difference scheme. The simulation tracks the transport of a scalar quantity u — representing temperature or concentration — advected by a uniform velocity field (c, c) across a square spatial domain.<br><br>The upwind scheme selects spatial derivatives from the upwind side of each node, ensuring numerical stability. The governing equation ∂u/∂t + c∂u/∂x + c∂u/∂y = 0 is discretised explicitly, advancing the field through 50 time steps. The final state is written to a text file for post-processing and visualisation in Python or MATLAB.</p>
+                      <p class="project-overview-date">Fortran + PyTorch · Finite Difference &amp; Physics-Informed Neural Network</p>
+                      <p class="project-overview-body">The two-dimensional linear convection equation ∂u/∂t + c∂u/∂x + c∂u/∂y = 0 is solved by two independent methods. The first is a Fortran finite-difference solver using the first-order upwind scheme, tracking a scalar quantity u advected by a uniform velocity field (c, c) across a square domain. The second is a PyTorch physics-informed neural network (PINN) that learns u(x, y, t) directly by minimising the PDE residual via automatic differentiation, without any spatial grid or time-marching.<br><br>The PINN is a fully connected network ([3, 64, 64, 64, 1], tanh activations) trained with Adam on a loss combining an initial-condition term and a PDE-residual term evaluated at randomly sampled collocation points. It was validated against the analytical solution of its own Gaussian initial condition, achieving low RMS error at the snapshot time.</p>
                       <ul class="project-overview-list">
-                        <li>21 × 21 grid over [0, 2] × [0, 2]; grid spacing Δx = Δy = 0.1; 50 time steps at Δt = 0.01.</li>
-                        <li>Initial condition: uniform background u = 1.0 with a top-hat square pulse (u = 2.0) in the region x, y ∈ [0.5, 1.0].</li>
-                        <li>Courant number C = 0.1 — well within the CFL stability limit of C ≤ 1; Dirichlet boundary conditions maintained throughout.</li>
-                        <li>Final field written to resu.txt; Python post-processing script generates plots of the convected scalar field.</li>
+                        <li><strong>FDM:</strong> 21 × 21 grid over [0, 2] × [0, 2]; Δx = Δy = 0.1; 50 time steps at Δt = 0.01; top-hat pulse initial condition (u = 2.0 in x, y ∈ [0.5, 1.0] on a u = 1.0 background); Courant number C = 0.1, well within the CFL limit.</li>
+                        <li><strong>PINN:</strong> 1,000 initial-condition points + 10,000 PDE collocation points sampled over x, y ∈ [0, 2], t ∈ [0, 0.5]; 2,000 training epochs; Gaussian pulse initial condition centred at (0.5, 0.5).</li>
+                        <li>Predictions evaluated on an 80 × 80 grid at t = 0.5 and exported to CSV; FDM and PINN surfaces rendered side by side in 3D for comparison.</li>
                       </ul>
                     </div>
                   </div>
